@@ -1,0 +1,154 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #eee;
+}
+
+nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  background-color: #1e1f28;
+  padding: 20px 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 999;
+}
+
+nav .navbar-nav {
+  display: flex;
+}
+
+nav .navbar-nav a {
+  margin: 0 20px;
+  transition: 300ms;
+}
+
+nav .navbar-nav a::after {
+  content: "";
+  transition: all 200ms linear;
+  display: block;
+  border-bottom: 3px solid #eee;
+  transform: scaleX(0);
+}
+
+nav .navbar-nav a:hover::after {
+  transform: scaleX(0.5);
+}
+
+nav a {
+  text-decoration: none;
+  color: #eee;
+  font-size: 1.3rem;
+}
+
+nav .logo {
+  font-weight: bold;
+}
+
+nav .menu {
+  display: none;
+  justify-content: space-around;
+  flex-direction: column;
+  width: 30px;
+  height: 30px;
+  transition: 300ms;
+  position: relative;
+}
+
+nav .menu input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
+nav .menu input:hover ~ span {
+  background-color: #ccc;
+}
+
+nav .menu span {
+  width: 30px;
+  height: 3px;
+  border: none;
+  border-radius: 3px;
+  background-color: #eee;
+  transform-origin: 0 0;
+  transition: 300ms;
+}
+
+nav .menu input:checked ~ span:nth-child(2) {
+  transform: rotate(45deg) translate(1px, -2px);
+}
+
+nav .menu input:checked ~ span:nth-child(3) {
+  transform: rotate3d(0, 1, 0, 90deg);
+  transform-origin: 50% 50%;
+  opacity: 0;
+}
+
+nav .menu input:checked ~ span:nth-child(4) {
+  transform: rotate(-45deg);
+}
+
+/* Responsive */
+
+/* Laptop */
+@media (max-width: 1366px) {
+  html {
+    font-size: 88%;
+  }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  html {
+    font-size: 80%;
+  }
+  nav .navbar-nav a {
+    margin: 10px 10px;
+    font-size: 1.4rem;
+  }
+  nav .navbar-nav {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 100%;
+    right: 8%;
+    background-color: #585b75;
+    padding: 20px 40px;
+    border-radius: 10px;
+    z-index: -999;
+    transition: 300ms;
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  nav .menu {
+    display: flex;
+  }
+  nav .navbar-nav.active {
+    transform: scaleY(1);
+  }
+  nav .navbar-nav a::after {
+    border-bottom: none;
+  }
+  nav .navbar-nav a:hover {
+    color: #1e1f28;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  html {
+    font-size: 75%;
+  }
+}
